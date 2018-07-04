@@ -27,6 +27,8 @@ extension ListFeed : EndPoint {
         let url = urlComponents.url!
         var urlrequest = URLRequest(url: url)
         urlrequest.httpMethod = "GET"
+        urlrequest.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+        urlrequest.addValue("text/plain", forHTTPHeaderField: "Accept")
         
         return urlrequest
     }

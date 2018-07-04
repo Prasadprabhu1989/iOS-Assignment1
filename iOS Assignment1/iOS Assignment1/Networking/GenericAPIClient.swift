@@ -55,7 +55,10 @@ extension APIClient{
         task.resume()
     }
     func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
-        let task = session.dataTask(with: URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!) { data, response, error in
+
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(nil, .requestFailed)
                 return
@@ -63,13 +66,13 @@ extension APIClient{
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-                        let isoString = String.init(data: data, encoding: String.Encoding.utf8)
-//                        NSString *strISOLatin = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
-                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
+                        let responseString = String.init(data: data, encoding: String.Encoding.ascii)
+                        let responseData = responseString?.data(using: String.Encoding.utf8)
+                        let genericModel = try JSONDecoder().decode(decodingType, from: responseData!)
                         
                         completion(genericModel, nil)
                     } catch {
-                        
+                       
                         completion(nil, .jsonConversionFailure)
                     }
                 } else {
@@ -79,31 +82,6 @@ extension APIClient{
                 completion(nil, .responseUnsuccessful)
             }
         }
-        
-//        let task = session.dataTask(with: request) { data, response, error in
-//            
-//            guard let httpResponse = response as? HTTPURLResponse else {
-//                completion(nil, .requestFailed)
-//                return
-//            }
-//            if httpResponse.statusCode == 200 {
-//                if let data = data {
-//                    do {
-//                        
-//                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
-//                        
-//                        completion(genericModel, nil)
-//                    } catch {
-//                       
-//                        completion(nil, .jsonConversionFailure)
-//                    }
-//                } else {
-//                    completion(nil, .invalidData)
-//                }
-//            } else {
-//                completion(nil, .responseUnsuccessful)
-//            }
-//        }
         return task
     }
     

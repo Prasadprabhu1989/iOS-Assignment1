@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import SDWebImage
 class ViewController: UIViewController {
-    let viewModel = ListViewModel()
+    var viewModel  = ListViewModel()
     let config = URLSessionConfiguration.default
     
 //    let session = URLSession()
@@ -28,53 +28,22 @@ class ViewController: UIViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.estimatedRowHeight = 60
-        let stringFile = Bundle.main.path(forResource: "Test", ofType: "doc")
-        do {
-            let data = try Data.init(contentsOf: URL(fileURLWithPath: stringFile!))
-            do {
-                
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                
-                
-            } catch {
-                print("error")
-                
-            }
-            
-        }
-        catch {
-            print("error")
-        }
         mainView.tableView.rowHeight = UITableViewAutomaticDimension
-        let session = URLSession(configuration: config)
-        let task =   session.dataTask(with: URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts")!) { (data, response, error) in
-            if let datas = data {
-//                do {
-//
-//                    let genericModel = try JSONDecoder().decode(List.self, from: datas)
-//
-//
-//                } catch {
-//
-//
-//                }
-                do {
-                    
-                    let json = try JSONSerialization.jsonObject(with: datas, options: .mutableContainers)
-                    
-                    
-                } catch {
-                    print("error")
-                    
-                }
-            } else {
-//                completion(nil, .invalidData)
+        
+        viewModel.fetchData(listFeed: .listFeed) { [weak self] (results) in
+            switch results {
+            case .success(let lists):
+                self?.viewModel = lists!
+                self?.mainView.tableView.reloadData()
+                break
+                
+            case .failure(let error):
+                self?.showAlert(error: error)
+                break
+                
+                
             }
         }
-        task.resume()
-//        viewModel.fetchData(listFeed: .listFeed) { (results) in
-//
-//        }
         
         
     }
@@ -83,22 +52,44 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func showAlert(error : Error) {
+        let alertController = UIAlertController(title: "Error", message: error as? String, preferredStyle: .alert)
+        self.present(alertController, animated: false, completion: nil)
+    }
 
 }
 extension ViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewId", for: indexPath) as! TableViewListCell
-        cell.descriptionLabel.text = "tttttttttssdgasdgasdgasdg32428342093402834-283-408234-82345-23845823-52-35230582358238528=35283=58=28=358=8=238=58=2358=asdasdasdasdadsasddsdadsdadadsass22222"
-        cell.titleLabel.text = "dvaksdfdfsfasdfsdfsdfasdf"
+        let row  : Rows = viewModel.getDescription(indexPath: indexPath)
+        cell.descriptionLabel.text = row.description
+        cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cachacr, url) in
+//             cell.layoutSubviews()
+            cell.setNeedsDisplay()
+           
+        }
+//        cell.loadImage(url: row.imageHref) { image in
+//            if let images  = image {
+//                cell.photoImageView.image = images
+//                cell.setNeedsDisplay()
+//                cell.layoutSubviews()
+//            }
+//        }
+        cell.titleLabel.text = row.title
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let rows =  viewModel.lists?.rows {
+            return rows.count
+        }
+       
+        
+        return 0
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
 }
+
 
