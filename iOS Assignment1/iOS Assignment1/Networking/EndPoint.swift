@@ -15,6 +15,7 @@ protocol EndPoint {
 enum ListFeed {
     case listFeed
 }
+
 extension ListFeed : EndPoint {
    
     var urlComponents : URLComponents {
@@ -33,7 +34,7 @@ extension ListFeed : EndPoint {
         return urlrequest
     }
     var base : String {
-        return "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+        return Constants.baseUrl
     }
     
 }

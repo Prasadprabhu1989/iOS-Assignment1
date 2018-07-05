@@ -18,6 +18,7 @@ class ListViewModel {
             case .success(let feeds):
                 if feeds != nil {
                     self?.lists = feeds
+                    self?.removeEmptyList()
                       completion(.success(self))
                 }
               
@@ -32,5 +33,14 @@ class ListViewModel {
     func getDescription(indexPath : IndexPath) -> Rows {
         return (lists?.rows![indexPath.row])!
     }
+    func removeEmptyList() {
+        
+        let arrayWithNoOptionals = lists?.rows?.filter{ $0.title != nil   }.map {$0 }
+        lists?.rows = arrayWithNoOptionals
+        
+    }
+    
+    
+   
     
 }

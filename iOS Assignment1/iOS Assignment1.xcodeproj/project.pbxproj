@@ -10,6 +10,8 @@
 		2AE3DDB5B087E04EBA5265CC /* Pods_iOS_Assignment1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC66A96897FBCF5691D5061 /* Pods_iOS_Assignment1.framework */; };
 		DB25623D72F8E04BC28DB9D9 /* Pods_iOS_Assignment1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C184CE7D44139346195EC87D /* Pods_iOS_Assignment1Tests.framework */; };
 		ECB937EA0934F0D8FC204F5F /* Pods_iOS_Assignment1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2523420DCD4A7B66A0356B0 /* Pods_iOS_Assignment1UITests.framework */; };
+		FD92018620EE41F400333967 /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92018520EE41F400333967 /* NetworkChecker.swift */; };
+		FD92018820EE50BC00333967 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92018720EE50BC00333967 /* Constant.swift */; };
 		FDDB2BE620EC97EA00F75713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BE520EC97EA00F75713 /* AppDelegate.swift */; };
 		FDDB2BE820EC97EA00F75713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BE720EC97EA00F75713 /* ViewController.swift */; };
 		FDDB2BEE20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BEC20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld */; };
@@ -54,6 +56,8 @@
 		BFC66A96897FBCF5691D5061 /* Pods_iOS_Assignment1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Assignment1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C184CE7D44139346195EC87D /* Pods_iOS_Assignment1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Assignment1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2523420DCD4A7B66A0356B0 /* Pods_iOS_Assignment1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Assignment1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD92018520EE41F400333967 /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
+		FD92018720EE50BC00333967 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FDDB2BE220EC97EA00F75713 /* iOS Assignment1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Assignment1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDB2BE520EC97EA00F75713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDDB2BE720EC97EA00F75713 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				FDDB2BF120EC97EB00F75713 /* LaunchScreen.storyboard */,
 				FDDB2BF420EC97EB00F75713 /* Info.plist */,
 				FDDB2BEC20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld */,
+				FD92018720EE50BC00333967 /* Constant.swift */,
 			);
 			path = "iOS Assignment1";
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				FDDB2C2220ECC53800F75713 /* GenericAPIClient.swift */,
 				FDDB2C2420ECC58A00F75713 /* Result.swift */,
 				FDDB2C2620ECC66D00F75713 /* APIClient.swift */,
+				FD92018520EE41F400333967 /* NetworkChecker.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -413,10 +419,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS Assignment1/Pods-iOS Assignment1-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,12 +441,14 @@
 			files = (
 				FDDB2C2520ECC58A00F75713 /* Result.swift in Sources */,
 				FDDB2BEE20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld in Sources */,
+				FD92018620EE41F400333967 /* NetworkChecker.swift in Sources */,
 				FDDB2C1A20EC9B9C00F75713 /* FirstView.swift in Sources */,
 				FDDB2C2720ECC66D00F75713 /* APIClient.swift in Sources */,
 				FDDB2C1E20ECA2A500F75713 /* ListViewModel.swift in Sources */,
 				FDDB2BE820EC97EA00F75713 /* ViewController.swift in Sources */,
 				FDDB2C2920ECC7D400F75713 /* List.swift in Sources */,
 				FDDB2C1C20EC9C6100F75713 /* TableViewListCellTableViewCell.swift in Sources */,
+				FD92018820EE50BC00333967 /* Constant.swift in Sources */,
 				FDDB2C2120ECC3B600F75713 /* EndPoint.swift in Sources */,
 				FDDB2BE620EC97EA00F75713 /* AppDelegate.swift in Sources */,
 				FDDB2C2320ECC53800F75713 /* GenericAPIClient.swift in Sources */,
@@ -606,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BED14EAF3FC776606559A3DF /* Pods-iOS Assignment1.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SN6CU7ER3;
@@ -615,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.appp.iOS-Assignment1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.app.iOS-Assignment1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,6 +637,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 688189561F26C12C06064D18 /* Pods-iOS Assignment1.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SN6CU7ER3;
@@ -635,7 +647,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.appp.iOS-Assignment1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.app.iOS-Assignment1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

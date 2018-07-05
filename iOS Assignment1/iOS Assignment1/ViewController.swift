@@ -25,15 +25,27 @@ class ViewController: UIViewController {
     }
     override func loadView() {
         view = FirstView()
+        mainView.delegate = self
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.estimatedRowHeight = 60
         mainView.tableView.rowHeight = UITableViewAutomaticDimension
+        mainView.showLoadingIndicator()
+        callList()
+       NetworkChecker.sharedManager.checkInternet()
         
+        
+        
+        
+    }
+    func callList() {
         viewModel.fetchData(listFeed: .listFeed) { [weak self] (results) in
             switch results {
             case .success(let lists):
                 self?.viewModel = lists!
+                self?.navigationItem.title = self?.viewModel.lists?.title
+                self?.mainView.refreshControl.endRefreshing()
+                self?.mainView.hideLoadingIndicator()
                 self?.mainView.tableView.reloadData()
                 break
                 
@@ -44,10 +56,7 @@ class ViewController: UIViewController {
                 
             }
         }
-        
-        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,23 +67,22 @@ class ViewController: UIViewController {
     }
 
 }
-extension ViewController : UITableViewDelegate,UITableViewDataSource {
+extension ViewController : UITableViewDelegate,UITableViewDataSource,viewProtocol{
+    func refreshTableView() {
+        callList()
+    }
+    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewId", for: indexPath) as! TableViewListCell
         let row  : Rows = viewModel.getDescription(indexPath: indexPath)
         cell.descriptionLabel.text = row.description
         cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cachacr, url) in
-//             cell.layoutSubviews()
+            
             cell.setNeedsDisplay()
-           
+            
         }
-//        cell.loadImage(url: row.imageHref) { image in
-//            if let images  = image {
-//                cell.photoImageView.image = images
-//                cell.setNeedsDisplay()
-//                cell.layoutSubviews()
-//            }
-//        }
+        
         cell.titleLabel.text = row.title
         return cell
     }

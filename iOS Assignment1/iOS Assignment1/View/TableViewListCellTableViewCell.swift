@@ -27,7 +27,7 @@ class TableViewListCell: UITableViewCell {
     private func configureView() {
         descriptionLabel.textColor = UIColor.black
          descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.contentMode = .scaleToFill
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
@@ -38,25 +38,25 @@ class TableViewListCell: UITableViewCell {
         descriptionLabel.lineBreakMode = .byWordWrapping
         let descriptionLabelmargins = contentView.layoutMarginsGuide
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.leadingAnchor.constraint(equalTo: descriptionLabelmargins.leadingAnchor, constant: 100).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 10).isActive = true
         descriptionLabel.bottomAnchor.constraint(equalTo: descriptionLabelmargins.bottomAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: descriptionLabelmargins.trailingAnchor, constant: 10).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
         
         let titleLabelMargins = contentView.layoutMarginsGuide
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: descriptionLabelmargins.leadingAnchor, constant: 100).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 10).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: 0).isActive = true
          titleLabel.topAnchor.constraint(equalTo: titleLabelMargins.topAnchor, constant: 10).isActive = true
 
         let imageViewMargins = contentView.layoutMarginsGuide
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
         photoImageView.leadingAnchor.constraint(equalTo: imageViewMargins.leadingAnchor, constant: 5).isActive = true
-        photoImageView.trailingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 50).isActive = true
-        photoImageView.topAnchor.constraint(equalTo: imageViewMargins.topAnchor, constant: 10).isActive = true
+
         photoImageView.centerYAnchor.constraint(equalTo: imageViewMargins.centerYAnchor, constant: 0).isActive = true
-//        photoImageView.widthAnchor.constraint(equalToConstant: 30)
-//        photoImageView.heightAnchor.constraint(equalToConstant: 30)
+        photoImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        photoImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
       
 
         
