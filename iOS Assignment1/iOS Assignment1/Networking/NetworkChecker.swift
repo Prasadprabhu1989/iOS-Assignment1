@@ -23,6 +23,11 @@ class NetworkChecker {
        
     }
     @objc func checkNetwork(_note : Notification)  {
-        NotificationCenter.default.post(Notifications.networkNotification)
+        let reachabilityStatus = _note.object as! Reachability
+        
+        reachabilityStatus.whenUnreachable = { _ in
+            NotificationCenter.default.post(name: .networkNotification, object: nil)
+        }
+        
     }
 }

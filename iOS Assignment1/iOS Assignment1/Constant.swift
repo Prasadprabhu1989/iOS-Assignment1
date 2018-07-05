@@ -10,6 +10,6 @@ import Foundation
 class Constants {
     static let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 }
-class Notifications {
-    static let networkNotification = "NetworkNotification"
+extension Notification.Name {
+    static let networkNotification = Notification.Name("Network Notification")
 }

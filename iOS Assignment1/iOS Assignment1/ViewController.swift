@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Reachability
 class ViewController: UIViewController {
     var viewModel  = ListViewModel()
     let config = URLSessionConfiguration.default
@@ -33,6 +34,11 @@ class ViewController: UIViewController {
         mainView.showLoadingIndicator()
         callList()
        NetworkChecker.sharedManager.checkInternet()
+        NotificationCenter.default.addObserver(forName: .networkNotification, object: nil, queue: OperationQueue.main) { [weak self] notification in
+            self?.showAlert(error: APIError.networkError)
+        }
+           
+       
         
         
         
@@ -62,7 +68,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func showAlert(error : Error) {
-        let alertController = UIAlertController(title: "Error", message: error as? String, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription , preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
         self.present(alertController, animated: false, completion: nil)
     }
 
