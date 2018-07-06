@@ -13,17 +13,21 @@ class ViewController: UIViewController {
     var viewModel  = ListViewModel()
     let config = URLSessionConfiguration.default
     
-//    let session = URLSession()
+
  private var mainView: FirstView {
     return view as! FirstView
     
     }
+    
+    //MARK: ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+
     override func loadView() {
         view = FirstView()
         mainView.delegate = self
@@ -35,15 +39,19 @@ class ViewController: UIViewController {
         callList()
        NetworkChecker.sharedManager.checkInternet()
         NotificationCenter.default.addObserver(forName: .networkNotification, object: nil, queue: OperationQueue.main) { [weak self] notification in
-            self?.showAlert(error: APIError.networkError)
+            let errorDescription = APIError.networkError.localizedDescription
+            self?.showAlert(description: errorDescription)
         }
-           
-       
-        
-        
-        
         
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //MARK: API Method
     func callList() {
         viewModel.fetchData(listFeed: .listFeed) { [weak self] (results) in
             switch results {
@@ -56,39 +64,40 @@ class ViewController: UIViewController {
                 break
                 
             case .failure(let error):
-                self?.showAlert(error: error)
+                let description = error.localizedDescription
+                self?.showAlert(description: description)
                 break
                 
                 
             }
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    func showAlert(error : Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription , preferredStyle: .alert)
+    
+    //MARK: Alert Dialogue
+    func showAlert(description : String) {
+        let alertController = UIAlertController(title: "Error", message: description , preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         self.present(alertController, animated: false, completion: nil)
     }
 
 }
+
 extension ViewController : UITableViewDelegate,UITableViewDataSource,viewProtocol{
+    
+    
+    //MARK: Custom Delegate
     func refreshTableView() {
         callList()
     }
     
-   
+    //MARK: TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewId", for: indexPath) as! TableViewListCell
         let row  : Rows = viewModel.getDescription(indexPath: indexPath)
         cell.descriptionLabel.text = row.description
-        cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cachacr, url) in
-            
-            cell.setNeedsDisplay()
-            
+        cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cache, url) in
+            cell.setNeedsDisplay()  
         }
         
         cell.titleLabel.text = row.title
@@ -99,10 +108,10 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource,viewProtoco
         if let rows =  viewModel.lists?.rows {
             return rows.count
         }
-       
-        
         return 0
     }
+    
+    //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }

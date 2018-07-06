@@ -34,7 +34,6 @@ class ListViewModel {
         return (lists?.rows![indexPath.row])!
     }
     func removeEmptyList() {
-        
         let arrayWithNoOptionals = lists?.rows?.filter{ $0.title != nil   }.map {$0 }
         lists?.rows = arrayWithNoOptionals
         

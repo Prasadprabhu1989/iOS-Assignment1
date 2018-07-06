@@ -20,7 +20,7 @@
 		FDDB2BFE20EC97EB00F75713 /* iOS_Assignment1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BFD20EC97EB00F75713 /* iOS_Assignment1Tests.swift */; };
 		FDDB2C0920EC97EB00F75713 /* iOS_Assignment1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C0820EC97EB00F75713 /* iOS_Assignment1UITests.swift */; };
 		FDDB2C1A20EC9B9C00F75713 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C1920EC9B9C00F75713 /* FirstView.swift */; };
-		FDDB2C1C20EC9C6100F75713 /* TableViewListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C1B20EC9C6100F75713 /* TableViewListCellTableViewCell.swift */; };
+		FDDB2C1C20EC9C6100F75713 /* TableViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C1B20EC9C6100F75713 /* TableViewListCell.swift */; };
 		FDDB2C1E20ECA2A500F75713 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C1D20ECA2A500F75713 /* ListViewModel.swift */; };
 		FDDB2C2120ECC3B600F75713 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C2020ECC3B600F75713 /* EndPoint.swift */; };
 		FDDB2C2320ECC53800F75713 /* GenericAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2C2220ECC53800F75713 /* GenericAPIClient.swift */; };
@@ -72,7 +72,7 @@
 		FDDB2C0820EC97EB00F75713 /* iOS_Assignment1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_Assignment1UITests.swift; sourceTree = "<group>"; };
 		FDDB2C0A20EC97EB00F75713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDDB2C1920EC9B9C00F75713 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
-		FDDB2C1B20EC9C6100F75713 /* TableViewListCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewListCellTableViewCell.swift; sourceTree = "<group>"; };
+		FDDB2C1B20EC9C6100F75713 /* TableViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewListCell.swift; sourceTree = "<group>"; };
 		FDDB2C1D20ECA2A500F75713 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		FDDB2C2020ECC3B600F75713 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		FDDB2C2220ECC53800F75713 /* GenericAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAPIClient.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDB2C1920EC9B9C00F75713 /* FirstView.swift */,
-				FDDB2C1B20EC9C6100F75713 /* TableViewListCellTableViewCell.swift */,
+				FDDB2C1B20EC9C6100F75713 /* TableViewListCell.swift */,
 			);
 			name = View;
 			path = "iOS Assignment1/View";
@@ -447,7 +447,7 @@
 				FDDB2C1E20ECA2A500F75713 /* ListViewModel.swift in Sources */,
 				FDDB2BE820EC97EA00F75713 /* ViewController.swift in Sources */,
 				FDDB2C2920ECC7D400F75713 /* List.swift in Sources */,
-				FDDB2C1C20EC9C6100F75713 /* TableViewListCellTableViewCell.swift in Sources */,
+				FDDB2C1C20EC9C6100F75713 /* TableViewListCell.swift in Sources */,
 				FD92018820EE50BC00333967 /* Constant.swift in Sources */,
 				FDDB2C2120ECC3B600F75713 /* EndPoint.swift in Sources */,
 				FDDB2BE620EC97EA00F75713 /* AppDelegate.swift in Sources */,
@@ -626,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.app.iOS-Assignment1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.appu.iOS-Assignment1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -647,7 +647,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.app.iOS-Assignment1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sw.appu.iOS-Assignment1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

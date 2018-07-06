@@ -13,21 +13,19 @@ class NetworkChecker {
    static let sharedManager = NetworkChecker()
      var reachability = Reachability()
     func checkInternet()  {
-    reachability = Reachability(hostname: Constants.baseUrl)
+    
+         NotificationCenter.default.addObserver(self, selector:#selector(checkNetwork(_note:)) , name: .reachabilityChanged, object: reachability)
     
         do {
-            try? reachability?.startNotifier()
-            NotificationCenter.default.addObserver(self, selector:#selector(checkNetwork(_note:)) , name: .reachabilityChanged, object: nil)
-       
+             try? reachability?.startNotifier()
         }
        
     }
+    
     @objc func checkNetwork(_note : Notification)  {
         let reachabilityStatus = _note.object as! Reachability
-        
-        reachabilityStatus.whenUnreachable = { _ in
-            NotificationCenter.default.post(name: .networkNotification, object: nil)
-        }
-        
+        if reachabilityStatus.connection == .none {
+             NotificationCenter.default.post(name: .networkNotification, object: nil)
+        }   
     }
 }
