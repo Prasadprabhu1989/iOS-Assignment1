@@ -31,7 +31,7 @@ class FirstView: UIView {
         addSubview(tableView)
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.register(TableViewListCell.self, forCellReuseIdentifier: "TableViewId")
+        tableView.register(TableViewListCell.self, forCellReuseIdentifier: Constants.tableViewId)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         let margins = self.layoutMarginsGuide

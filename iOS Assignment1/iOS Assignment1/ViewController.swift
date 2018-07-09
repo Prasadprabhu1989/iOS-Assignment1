@@ -93,7 +93,7 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource,viewProtoco
     
     //MARK: TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewId", for: indexPath) as! TableViewListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewId, for: indexPath) as! TableViewListCell
         let row  : Rows = viewModel.getDescription(indexPath: indexPath)
         cell.descriptionLabel.text = row.description
         cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cache, url) in

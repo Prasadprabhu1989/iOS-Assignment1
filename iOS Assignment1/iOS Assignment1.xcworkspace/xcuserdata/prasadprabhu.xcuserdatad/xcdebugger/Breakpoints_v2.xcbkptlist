@@ -63,8 +63,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "checkNetwork(_note:)"
-            landmarkType = "7">
+            landmarkName = "NetworkChecker"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS Assignment1/ViewController.swift"
-            timestampString = "552498401.7135201"
+            timestampString = "552750617.354718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS Assignment1/ViewController.swift"
-            timestampString = "552498401.714103"
+            timestampString = "552750617.4547139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "showAlert(error:)"
+            landmarkName = "callList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

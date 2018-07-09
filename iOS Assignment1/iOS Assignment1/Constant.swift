@@ -9,6 +9,12 @@
 import Foundation
 class Constants {
     static let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+    static let tableViewId = "TableViewId"
+    static let httpContentType = "Content-Type"
+    static let httpContentAccept = "Accept"
+    static let plainText = "text/plain"
+    static let httpGet = "GET"
+    
 }
 extension Notification.Name {
     static let networkNotification = Notification.Name("Network Notification")
