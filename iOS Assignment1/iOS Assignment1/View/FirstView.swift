@@ -11,9 +11,11 @@ protocol viewProtocol {
       func refreshTableView()
 }
 class FirstView: UIView {
-    var delegate : viewProtocol?
+    weak var delegate : viewProtocol?
     var loadingIndicator : UIActivityIndicatorView
     var tableView : UITableView
+    
+    //instantiate refresh control
     lazy var refreshControl : UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
@@ -38,7 +40,7 @@ class FirstView: UIView {
         tableView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         tableView.addSubview(refreshControl)
-//        loadingIndicator.startAnimating()
+
         loadingIndicator.color = UIColor.black
         addSubview(loadingIndicator)
        
@@ -50,6 +52,7 @@ class FirstView: UIView {
 
         
     }
+    // Pull to refresh
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
          refreshControl.beginRefreshing()
         delegate?.refreshTableView()
@@ -57,12 +60,12 @@ class FirstView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    func hideView()  {
-//        tableView.isHidden = true
-//    }
+
+    //show tableview
     func showView()  {
         tableView.isHidden = false
     }
+    //show loading indicator
     func showLoadingIndicator()
     
     {
@@ -71,31 +74,11 @@ class FirstView: UIView {
 
         
     }
+     //hide loading indicator
     func hideLoadingIndicator() {
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.stopAnimating()
         showView()
     }
 }
-extension UIImageView {
-    func loadFromUrl(url : URL?, completion :@escaping (UIImage?) -> Void)  {
-        if let imageUrl = url {
-            let task = URLSession.shared.dataTask(with: imageUrl) { (responseData, response, error) in
-                if let data = responseData {
-                    // execute in UI thread
-                    DispatchQueue.main.async {
-                        completion(UIImage(data: data))
-                    }
-//
-                }
-                else {
-                    DispatchQueue.main.async {
-                        completion(nil)
-                    }
-                }
-            }
-            task.resume()
-        }
-      
-    }
-}
+

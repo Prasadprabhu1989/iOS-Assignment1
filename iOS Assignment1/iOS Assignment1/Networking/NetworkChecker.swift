@@ -12,6 +12,8 @@ import Reachability
 class NetworkChecker {
    static let sharedManager = NetworkChecker()
      var reachability = Reachability()
+    
+    //internet check method
     func checkInternet()  {
     
          NotificationCenter.default.addObserver(self, selector:#selector(checkNetwork(_note:)) , name: .reachabilityChanged, object: reachability)

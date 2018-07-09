@@ -16,6 +16,7 @@ class ListAPIClient : APIClient {
     convenience init() {
         self.init(configuration: .default)
     }
+    //api method
     func getList(list : ListFeed, completion : @escaping (Result<List? , APIError>) -> Void){
      let mthod = list
         let  request = mthod.request
