@@ -65,9 +65,5 @@ class TableViewListCell: UITableViewCell {
         super.prepareForReuse()
         photoImageView.image = nil
     }
-    func loadImage(url : URL?, completion:@escaping (UIImage?) -> Void)  {
-        photoImageView.loadFromUrl(url: url) { (image) in
-            completion(image)
-        }
-    }
+    
 }

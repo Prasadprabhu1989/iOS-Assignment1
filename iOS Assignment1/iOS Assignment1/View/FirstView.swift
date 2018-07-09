@@ -11,7 +11,7 @@ protocol viewProtocol {
       func refreshTableView()
 }
 class FirstView: UIView {
-    weak var delegate : viewProtocol?
+    var delegate : viewProtocol?
     var loadingIndicator : UIActivityIndicatorView
     var tableView : UITableView
     
