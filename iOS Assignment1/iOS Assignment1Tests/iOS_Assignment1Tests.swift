@@ -15,7 +15,13 @@ class iOS_Assignment1Tests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-   
+    func testTableViewCellReUsableIdentifier(){
+        let cell = listViewController.tableView(listViewController.mainView.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? TableViewListCell
+        let actualIdentifier = cell?.reuseIdentifier
+        let expectedIdentifier = "TableViewId"
+        XCTAssertEqual(actualIdentifier, expectedIdentifier)
+    }
+    
     func test_count_nil_check() {
         listViewController.viewModel.fetchData(listFeed: .listFeed) {  results in
         XCTAssertNotNil(results, "The object is Not Nil")

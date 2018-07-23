@@ -30,8 +30,11 @@ class ListViewModel {
             }
         }
     }
-    func getDescription(indexPath : IndexPath) -> Rows {
-        return (lists?.rows![indexPath.row])!
+    func getDescription(indexPath : IndexPath) -> Rows? {
+        if let row = lists?.rows?[indexPath.row]{
+            return row
+        }
+        return nil
     }
     func removeEmptyList() {
         let arrayWithNoOptionals = lists?.rows?.filter{ $0.title != nil   }.map {$0 }

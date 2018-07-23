@@ -14,6 +14,7 @@ class Constants {
     static let httpContentAccept = "Accept"
     static let plainText = "text/plain"
     static let httpGet = "GET"
+    static let placeholderImage = "Placeholder"
     
 }
 extension Notification.Name {

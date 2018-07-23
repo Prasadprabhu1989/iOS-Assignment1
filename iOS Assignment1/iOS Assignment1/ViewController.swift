@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let config = URLSessionConfiguration.default
     
 
- private var mainView: FirstView {
+  var mainView: FirstView {
     return view as! FirstView
     
     }
@@ -93,15 +93,23 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource,viewProtoco
     
     //MARK: TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewId, for: indexPath) as! TableViewListCell
-        let row  : Rows = viewModel.getDescription(indexPath: indexPath)
-        cell.descriptionLabel.text = row.description
-        cell.photoImageView.sd_setImage(with: row.imageHref) { (image, error, cache, url) in
-            cell.setNeedsDisplay()  
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewId, for: indexPath) as? TableViewListCell
+            {
+                if let row : Rows = viewModel.getDescription(indexPath: indexPath){
+                    
+                    cell.descriptionLabel.text = row.description
+                    cell.photoImageView.sd_setImage(with: row.imageHref, placeholderImage: UIImage(named: Constants.placeholderImage), options: .continueInBackground) { (image, error, cache, url) in
+                          cell.setNeedsDisplay()
+                    }
+
+                    cell.titleLabel.text = row.title
+                }
+
+                   return cell
         }
         
-        cell.titleLabel.text = row.title
-        return cell
+      return UITableViewCell()
+     
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
