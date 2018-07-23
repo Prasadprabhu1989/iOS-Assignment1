@@ -11,8 +11,12 @@ import XCTest
 
 class iOS_Assignment1Tests: XCTestCase {
     let listViewController = ViewController()
+     let session = URLSessionMock()
+    var client = ListAPIClient()
     override func setUp() {
         super.setUp()
+        
+         client = ListAPIClient(session: session)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     func testTableViewCellReUsableIdentifier(){
@@ -21,7 +25,14 @@ class iOS_Assignment1Tests: XCTestCase {
         let expectedIdentifier = "TableViewId"
         XCTAssertEqual(actualIdentifier, expectedIdentifier)
     }
-    
+    func test_get_request_url() {
+        guard let url = URL(string: Constants.baseUrl) else {
+            fatalError("URL can't be empty")
+        }
+        client.getList(list: .listFeed) { results in}
+        XCTAssert(session.lastUrl == url)
+        
+    }
     func test_count_nil_check() {
         listViewController.viewModel.fetchData(listFeed: .listFeed) {  results in
         XCTAssertNotNil(results, "The object is Not Nil")
