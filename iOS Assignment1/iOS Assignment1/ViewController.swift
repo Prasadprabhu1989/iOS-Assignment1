@@ -30,12 +30,7 @@ class ViewController: UIViewController {
 
     override func loadView() {
         view = FirstView()
-        mainView.delegate = self
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
-        mainView.tableView.estimatedRowHeight = 60
-        mainView.tableView.rowHeight = UITableViewAutomaticDimension
-        mainView.showLoadingIndicator()
+       loadMainView()
         callList()
        NetworkChecker.sharedManager.checkInternet()
         NotificationCenter.default.addObserver(forName: .networkNotification, object: nil, queue: OperationQueue.main) { [weak self] notification in
@@ -45,6 +40,16 @@ class ViewController: UIViewController {
         
     }
     
+    
+    //loads view contianing tableview
+    func loadMainView(){
+        mainView.delegate = self
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.tableView.estimatedRowHeight = 60
+        mainView.tableView.rowHeight = UITableViewAutomaticDimension
+        mainView.showLoadingIndicator()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
