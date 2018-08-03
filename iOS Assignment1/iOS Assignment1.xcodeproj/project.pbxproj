@@ -14,7 +14,6 @@
 		FD92018820EE50BC00333967 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD92018720EE50BC00333967 /* Constant.swift */; };
 		FDDB2BE620EC97EA00F75713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BE520EC97EA00F75713 /* AppDelegate.swift */; };
 		FDDB2BE820EC97EA00F75713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BE720EC97EA00F75713 /* ViewController.swift */; };
-		FDDB2BEE20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BEC20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld */; };
 		FDDB2BF020EC97EB00F75713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDDB2BEF20EC97EB00F75713 /* Assets.xcassets */; };
 		FDDB2BF320EC97EB00F75713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDDB2BF120EC97EB00F75713 /* LaunchScreen.storyboard */; };
 		FDDB2BFE20EC97EB00F75713 /* iOS_Assignment1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDB2BFD20EC97EB00F75713 /* iOS_Assignment1Tests.swift */; };
@@ -61,7 +60,6 @@
 		FDDB2BE220EC97EA00F75713 /* iOS Assignment1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Assignment1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDB2BE520EC97EA00F75713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDDB2BE720EC97EA00F75713 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FDDB2BED20EC97EA00F75713 /* iOS_Assignment1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS_Assignment1.xcdatamodel; sourceTree = "<group>"; };
 		FDDB2BEF20EC97EB00F75713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDDB2BF220EC97EB00F75713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDDB2BF420EC97EB00F75713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				FDDB2BEF20EC97EB00F75713 /* Assets.xcassets */,
 				FDDB2BF120EC97EB00F75713 /* LaunchScreen.storyboard */,
 				FDDB2BF420EC97EB00F75713 /* Info.plist */,
-				FDDB2BEC20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld */,
 				FD92018720EE50BC00333967 /* Constant.swift */,
 			);
 			path = "iOS Assignment1";
@@ -440,7 +437,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDDB2C2520ECC58A00F75713 /* Result.swift in Sources */,
-				FDDB2BEE20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld in Sources */,
 				FD92018620EE41F400333967 /* NetworkChecker.swift in Sources */,
 				FDDB2C1A20EC9B9C00F75713 /* FirstView.swift in Sources */,
 				FDDB2C2720ECC66D00F75713 /* APIClient.swift in Sources */,
@@ -780,19 +776,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FDDB2BEC20EC97EA00F75713 /* iOS_Assignment1.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FDDB2BED20EC97EA00F75713 /* iOS_Assignment1.xcdatamodel */,
-			);
-			currentVersion = FDDB2BED20EC97EA00F75713 /* iOS_Assignment1.xcdatamodel */;
-			path = iOS_Assignment1.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FDDB2BDA20EC97EA00F75713 /* Project object */;
 }
