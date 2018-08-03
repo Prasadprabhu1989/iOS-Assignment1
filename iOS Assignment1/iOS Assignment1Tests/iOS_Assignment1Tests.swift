@@ -42,6 +42,23 @@ class iOS_Assignment1Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    func testNetworkData(){
+        let promise = expectation(description: "Simple Request")
+        let request = URLRequest(url: URL(string:Constants.baseUrl)!)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {return}
+            do{
+                let responseString = String.init(data: data, encoding: String.Encoding.ascii)
+                let responseData = responseString?.data(using: String.Encoding.utf8)
+                promise.fulfill()
+            }
+            catch let err {
+                print("error",error)
+            }
+        }.resume()
+        waitForExpectations(timeout: 5.0, handler: nil)
+       
+    }
     
     func testExample() {
         // This is an example of a functional test case.

@@ -25,9 +25,13 @@ class TableViewListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     private func configureView() {
+        contentView.addSubview(descriptionLabel)
+          contentView.addSubview(titleLabel)
+        contentView.addSubview(photoImageView)
+        loadPhotoImage()
         loadTitleLabel()
         loadDescriptionLabel()
-        loadPhotoImage()
+        
         
     }
     
@@ -35,7 +39,7 @@ class TableViewListCell: UITableViewCell {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
-        contentView.addSubview(titleLabel)
+      
         let titleLabelMargins = contentView.layoutMarginsGuide
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 10).isActive = true
@@ -45,7 +49,7 @@ class TableViewListCell: UITableViewCell {
     func loadDescriptionLabel() {
         descriptionLabel.textColor = UIColor.black
         descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        contentView.addSubview(descriptionLabel)
+        
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         let descriptionLabelmargins = contentView.layoutMarginsGuide
@@ -58,7 +62,7 @@ class TableViewListCell: UITableViewCell {
     
     func loadPhotoImage(){
         photoImageView.contentMode = .scaleToFill
-        contentView.addSubview(photoImageView)
+        
         let imageViewMargins = contentView.layoutMarginsGuide
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
         photoImageView.leadingAnchor.constraint(equalTo: imageViewMargins.leadingAnchor, constant: 5).isActive = true
