@@ -48,8 +48,8 @@ class iOS_Assignment1Tests: XCTestCase {
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {return}
             do{
-                let responseString = String.init(data: data, encoding: String.Encoding.ascii)
-                let responseData = responseString?.data(using: String.Encoding.utf8)
+                let _ = String.init(data: data, encoding: String.Encoding.ascii)
+                
                 promise.fulfill()
             }
             catch let err {
