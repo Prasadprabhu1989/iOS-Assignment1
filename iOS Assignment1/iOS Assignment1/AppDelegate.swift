@@ -21,9 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame : UIScreen.main.bounds)
         let viewController = ViewController()
         let navigationController = UINavigationController.init(rootViewController: viewController)
+        
         viewController.view.backgroundColor = UIColor.white
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        if let window = window{
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
+        
         return true
     }
 
